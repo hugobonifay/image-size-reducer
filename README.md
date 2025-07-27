@@ -5,8 +5,9 @@ No upload, no tracking, just fast, local compression.
 
 ## ✨ Features
 
-- Client-side image compression (JPEG/PNG)
+- Client-side image compression
 - Set max desired size (in KiB)
+- Set desired format (WEBP, PNG, JPEG)
 - Live preview: original vs. compressed
 - Download the compressed image
 
@@ -46,9 +47,3 @@ Then open http://localhost:5173 in your browser.
 ```bash
 npm run build
 ```
-
-### 🛠️ Built With
-
-- React
-- Vite (for dev/build)
-- Pure JavaScript compression logic (no external libs)

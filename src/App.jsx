@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { compressImage, formatBytes, texts } from "./utils";
+import imageCompression from "browser-image-compression";
 import "./App.css";
 
 function App() {
@@ -28,10 +29,20 @@ function App() {
     setIsLoading(true);
 
     try {
-      const sizeInBytes =
-        Number(expectedSize) > 0 ? Number(expectedSize) * 1024 : 500 * 1024;
+      // const sizeInBytes =
+      //   Number(expectedSize) > 0 ? Number(expectedSize) * 1024 : 500 * 1024;
 
-      const compressedBlob = await compressImage(file, sizeInBytes, format);
+      // const compressedBlob = await compressImage(file, sizeInBytes, format);
+
+      const sizeInMB =
+        Number(expectedSize) > 0 ? Number(expectedSize) / 1024 : 500 / 1024;
+
+      const compressedBlob = await imageCompression(file, {
+        maxSizeMB: sizeInMB,
+        useWebWorker: true,
+        fileType: format,
+      });
+
       setCompressedSize(compressedBlob.size);
       const url = URL.createObjectURL(compressedBlob);
       setCompressedUrl(url);
@@ -94,6 +105,7 @@ function App() {
           value={expectedSize || ""}
           id="expectedSize"
           maxLength={5}
+          autoComplete="off"
         />
       </div>
 

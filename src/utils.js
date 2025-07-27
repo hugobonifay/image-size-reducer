@@ -91,7 +91,7 @@ export function formatBytes(bytes, decimals = 2) {
 
 export const texts = {
   en: {
-    title: "Image size reducer",
+    title: "Image Size Reducer",
     description: {
       0: "How it works",
       1: "This tool lets you reduce the size of your images instantly, everything happens in your browser.",
