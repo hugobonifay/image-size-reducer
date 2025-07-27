@@ -55,7 +55,8 @@
     color: #5b5e61
 }
 
-.input-size {
+.input-size,
+.input-format {
     display: flex;
     flex-direction: column;
     margin-bottom: 25px;

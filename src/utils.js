@@ -1,4 +1,8 @@
-export function compressImage(file, maxSizeInBytes = 500 * 1024) {
+export function compressImage(
+  file,
+  maxSizeInBytes = 500 * 1024,
+  outputFormat = null
+) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
 
@@ -23,7 +27,7 @@ export function compressImage(file, maxSizeInBytes = 500 * 1024) {
           ctx.clearRect(0, 0, width, height);
           ctx.drawImage(img, 0, 0, width, height);
 
-          const format = "image/jpeg";
+          const format = outputFormat || file.type || "image/jpeg";
 
           canvas.toBlob(
             (blob) => {
@@ -109,5 +113,6 @@ export const texts = {
     retryButtonLabel: "Retry",
     closeButtonLabel: "Close",
     previewTitle: "Preview",
+    formatInputLabel: "Desired format",
   },
 };

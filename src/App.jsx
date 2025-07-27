@@ -12,6 +12,7 @@ function App() {
   const [compressedUrl, setCompressedUrl] = useState(null);
   const [compressedSize, setCompressedSize] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [format, setFormat] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChangeExpectedSize = (e) => {
@@ -30,7 +31,7 @@ function App() {
       const sizeInBytes =
         Number(expectedSize) > 0 ? Number(expectedSize) * 1024 : 500 * 1024;
 
-      const compressedBlob = await compressImage(file, sizeInBytes);
+      const compressedBlob = await compressImage(file, sizeInBytes, format);
       setCompressedSize(compressedBlob.size);
       const url = URL.createObjectURL(compressedBlob);
       setCompressedUrl(url);
@@ -96,6 +97,23 @@ function App() {
         />
       </div>
 
+      <div className="input-format">
+        <label htmlFor="format" className="input-label">
+          {t.formatInputLabel}
+        </label>
+        <select
+          className="input"
+          onChange={(e) => setFormat(e.target.value)}
+          value={format || ""}
+          id="format"
+        >
+          <option value="">Auto</option>
+          <option value="image/webp">WEBP</option>
+          <option value="image/png">PNG</option>
+          <option value="image/jpeg">JPEG</option>
+        </select>
+      </div>
+
       <div className="input-file">
         <p className="input-label">{t.imageFieldLabel}</p>
         <label>
@@ -135,7 +153,7 @@ function App() {
               <button type="button" onClick={handleRetry}>
                 {t.retryButtonLabel}
               </button>
-              <a href={compressedUrl} download="compressed.jpg">
+              <a href={compressedUrl} download="compressed">
                 {t.downloadButtonLabel}
               </a>
             </div>
