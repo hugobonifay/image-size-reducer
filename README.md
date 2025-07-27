@@ -1,7 +1,7 @@
 # Image Size Reducer
 
 Simple web app to compress images directly in your browser.  
-No upload, no tracking — just fast, local compression.
+No upload, no tracking, just fast, local compression.
 
 ## ✨ Features
 
@@ -12,11 +12,11 @@ No upload, no tracking — just fast, local compression.
 
 ## 🖼️ Use Case
 
-Ideal for reducing image size before sharing or uploading — especially on mobile or limited connections.
+Ideal for reducing image size before sharing or uploading, especially on mobile or limited connections.
 
 ## 📄 License
 
-MIT – feel free to use and modify.
+MIT - feel free to use and modify.
 
 ## 🚀 Getting Started
 
